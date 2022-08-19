@@ -4,7 +4,7 @@ import routes from './src/api/routes.js';
 
 const app = express();
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 1234);
 
 //middlewares
 app.use(cors())

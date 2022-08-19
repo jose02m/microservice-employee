@@ -6,7 +6,7 @@ export async function createEmployee(req, res, next) {
     const result = await employeeOps.insert(employeeData);
     res.json(result);
   } catch (error) {
-    return next();
+    return next({ error });
   }
 }
 export async function readEmployees(req, res, next) {
@@ -28,19 +28,19 @@ export async function readOneEmployee(req, res, next) {
 }
 export async function updateEmployee(req, res, next) {
   try {
-    const codigo = { ...req.params };
+    const { codigo } = req.params;
     const employeeData = { ...req.body };
     const result = await employeeOps.update(codigo, employeeData);
-    res.send(result);
+    res.json(result);
   } catch (error) {
     return next({ error });
   }
 }
 export async function deleteEmployee(req, res, next) {
   try {
-    const codigo = { ...req.params };
+    const { codigo } = req.params;
     const result = await employeeOps.deleteEmployee(codigo);
-    res.send(result);
+    res.json(result);
   } catch (error) {
     return next({ error });
   }
